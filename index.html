@@ -542,7 +542,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // --- CONFIGURACIÓN GOOGLE SHEETS ---
             // Pegá acá la URL que copiaste de la implementación de Google Apps Script
-            const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyBL29-9wvqhn7ewd6G8xiQpdSSv2dJc6kNNuMv8wH4IxV5ftE5qDAG9iQ-gH2vaa-e/exec'; 
+            const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyu-kThFDkCRcOLzlxwGAXsre_P1sJpO3dD-1MBZTKp4TYPCmLyFhaTLaqPoUZ-_j-o/exec; 
 
             const form = document.getElementById('nexo-form');
             const servicioSelect = document.getElementById('servicio');
@@ -608,18 +608,21 @@
                         formData.fileMimeType = file.type;
                     }
 
+                    console.log("Enviando datos a NEXO...", formData);
+
                     // Si hay URL configurada, enviamos
                     if (GOOGLE_SHEET_URL) {
+                        // Usamos text/plain para evitar problemas de preflight CORS
                         await fetch(GOOGLE_SHEET_URL, {
                             method: 'POST',
                             mode: 'no-cors',
                             cache: 'no-cache',
-                            headers: { 'Content-Type': 'application/json' },
+                            headers: { 'Content-Type': 'text/plain' },
                             body: JSON.stringify(formData)
                         });
                     }
 
-                    // Éxito
+                    // Éxito (con no-cors no podemos leer la respuesta, así que asumimos éxito si no hay error de red)
                     formContent.style.display = 'none';
                     successMessage.style.display = 'block';
                     successText.innerText = `¡Postulación Recibida, ${nombre}! Te escribimos por WhatsApp en menos de 24hs.`;
