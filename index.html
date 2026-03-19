@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO | Tu puente al mundo profesional</title>
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-blue: #1a237e;
+            --emerald-green: #2e7d32;
+            --accent-orange: #e67e22; /* From the logo's X */
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --text-dark: #333333;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            color: var(--midnight-blue);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        /* --- Layout --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-svg {
+            height: 50px;
+            width: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-blue {
+            background-color: var(--midnight-blue);
+            color: var(--white);
+        }
+
+        .btn-blue:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(26, 35, 126, 0.3);
+        }
+
+        .btn-green {
+            background-color: var(--emerald-green);
+            color: var(--white);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 18px 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            padding: 40px;
+            border-radius: 24px;
+            color: var(--white);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-blue {
+            background-color: var(--midnight-blue);
+        }
+
+        .card-green {
+            background-color: var(--emerald-green);
+        }
+
+        .card h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* --- Process Section --- */
+        .process {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .process h2 {
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .process-item {
+            padding: 20px;
+        }
+
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--midnight-blue);
+            transition: var(--transition);
+        }
+
+        .process-item:hover .process-icon {
+            background-color: var(--midnight-blue);
+            color: var(--white);
+            transform: rotate(10deg);
+        }
+
+        .process-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--midnight-blue);
+        }
+
+        /* --- Form Section --- */
+        .postulacion {
+            background-color: var(--light-gray);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--midnight-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--midnight-blue);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a237e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+        }
+
+        #cv-upload-group {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--white);
+            border-top: 1px solid #eee;
+        }
+
+        footer .logo-svg {
+            margin-bottom: 20px;
+        }
+
+        footer h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 60px 0; }
+            .form-container { padding: 30px 20px; }
+            .header .btn { padding: 10px 20px; font-size: 0.8rem; }
+        }
+
+        /* --- Spinner --- */
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading .spinner { display: block; }
+        .loading .btn-text { display: none; }
+
+        /* --- Success Message --- */
+        #success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #success-message h2 {
+            color: var(--emerald-green);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- SVG Logo based on sinnombre.jpg - High Quality Refined -->
+                <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 'n' and 'e' in Midnight Blue -->
+                    <text x="5" y="45" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="#1a237e">n</text>
+                    <text x="45" y="45" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="#1a237e">e</text>
+                    
+                    <!-- 'x' with Brushstroke effect (Orange and Green) -->
+                    <!-- Orange stroke -->
+                    <path d="M15,65 C20,75 35,90 45,105" stroke="#e67e22" stroke-width="14" stroke-linecap="round" fill="none" />
+                    <!-- Green stroke -->
+                    <path d="M45,65 C40,75 25,90 15,105" stroke="#2e7d32" stroke-width="14" stroke-linecap="round" fill="none" />
+                    
+                    <!-- 'o' as Magnifying Glass in Midnight Blue -->
+                    <circle cx="85" cy="85" r="18" fill="none" stroke="#1a237e" stroke-width="10" />
+                    <line x1="98" y1="98" x2="115" y2="115" stroke="#1a237e" stroke-width="10" stroke-linecap="round" />
+                </svg>
+            </div>
+            <a href="#proceso" class="btn btn-blue">Que hacemos</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Conectando talento</h1>
+                <p>El nexo perfecto entre vos y las empresas</p>
+                <a href="#postulacion" class="btn btn-green">Postularme Ahora</a>
+            </div>
+        </section>
+
+        <!-- Value Section -->
+        <section class="services">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="card card-blue">
+                        <h3>A. Optimizar mi CV</h3>
+                        <p>Para los que ya tienen uno y quieren llevarlo al siguiente nivel.</p>
+                    </div>
+                    <div class="card card-green">
+                        <h3>B. Armar CV desde cero</h3>
+                        <p>Para los que arrancan y no saben por dónde empezar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="proceso" class="process">
+            <div class="container">
+                <h2>Cruzá el puente en 3 pasos.</h2>
+                <div class="process-grid">
+                    <div class="process-item">
+                        <div class="process-icon">1</div>
+                        <h4>Postulación en la Web</h4>
+                        <p>Elegís tu opción y nos dejás tus datos de contacto.</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon">2</div>
+                        <h4>Contacto Rápido</h4>
+                        <p>Te escribimos por WhatsApp o Mail en menos de 24hs para coordinar el Zoom.</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon">3</div>
+                        <h4>Entrega del Kit Nexo</h4>
+                        <p>Recibís tu CV de alto impacto y tu perfil de LinkedIn listo para brillar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="postulacion" class="postulacion">
+            <div class="container">
+                <div class="form-container">
+                    <div id="form-content">
+                        <div class="form-header">
+                            <h2>¿Estás listo para dar el salto?</h2>
+                            <p>Completá esto y te contactamos en menos de 24hs.</p>
+                        </div>
+                        <form id="nexo-form">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej: Juan Pérez" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="Ej: +54 9 11 ..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio">¿Qué necesitás?</label>
+                                <select id="servicio" name="servicio" class="form-control" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="optimizar">A. Optimizar mi CV</option>
+                                    <option value="desde-cero">B. Armar CV desde cero</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="cv-upload-group">
+                                <label for="cv">Subir tu CV actual (PDF/Doc)</label>
+                                <input type="file" id="cv" name="cv" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-green btn-submit" id="submit-btn">
+                                <span class="btn-text">¡Quiero mi Kit NEXO!</span>
+                                <div class="spinner"></div>
+                            </button>
+                        </form>
+                    </div>
+                    <div id="success-message">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h2 id="success-title">¡Postulación Recibida!</h2>
+                        <p id="success-text"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <!-- SVG Logo based on sinnombre.jpg - High Quality Refined -->
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- 'n' and 'e' in Midnight Blue -->
+                <text x="5" y="45" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="#1a237e">n</text>
+                <text x="45" y="45" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="#1a237e">e</text>
+                
+                <!-- 'x' with Brushstroke effect (Orange and Green) -->
+                <!-- Orange stroke -->
+                <path d="M15,65 C20,75 35,90 45,105" stroke="#e67e22" stroke-width="14" stroke-linecap="round" fill="none" />
+                <!-- Green stroke -->
+                <path d="M45,65 C40,75 25,90 15,105" stroke="#2e7d32" stroke-width="14" stroke-linecap="round" fill="none" />
+                
+                <!-- 'o' as Magnifying Glass in Midnight Blue -->
+                <circle cx="85" cy="85" r="18" fill="none" stroke="#1a237e" stroke-width="10" />
+                <line x1="98" y1="98" x2="115" y2="115" stroke="#1a237e" stroke-width="10" stroke-linecap="round" />
+            </svg>
+            <h3>"Somos el Nexo entre vos y lo que estabas buscando."</h3>
+            <p>NEXO © 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURACIÓN GOOGLE SHEETS ---
+            // Pegá acá la URL que copiaste de la implementación de Google Apps Script
+            const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwqG3x8cLVXBtMiuJyiJtCKPiU1XsMspuiqjVNI9dMJHZiQwn-n2FVYTlDliGsPsRR-/exec'; 
+
+            const form = document.getElementById('nexo-form');
+            const servicioSelect = document.getElementById('servicio');
+            const cvUploadGroup = document.getElementById('cv-upload-group');
+            const cvInput = document.getElementById('cv');
+            const submitBtn = document.getElementById('submit-btn');
+            const formContent = document.getElementById('form-content');
+            const successMessage = document.getElementById('success-message');
+            const successText = document.getElementById('success-text');
+
+            // Show/Hide CV Upload based on service selection
+            servicioSelect.addEventListener('change', (e) => {
+                if (e.target.value === 'optimizar') {
+                    cvUploadGroup.style.display = 'block';
+                    cvInput.required = true;
+                } else {
+                    cvUploadGroup.style.display = 'none';
+                    cvInput.required = false;
+                    cvInput.value = ''; // Clear file if hidden
+                }
+            });
+
+            // Form Submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                const nombre = document.getElementById('nombre').value;
+                const whatsapp = document.getElementById('whatsapp').value;
+                const email = document.getElementById('email').value;
+                const servicio = document.getElementById('servicio').value;
+                const fileInput = document.getElementById('cv');
+
+                // Iniciar carga
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+
+                try {
+                    // Preparar datos básicos
+                    const formData = {
+                        nombre,
+                        whatsapp,
+                        email,
+                        servicio: servicio === 'optimizar' ? 'A. Optimizar CV' : 'B. Armar desde cero'
+                    };
+
+                    // Si hay un archivo, lo convertimos a Base64
+                    if (fileInput.files.length > 0) {
+                        const file = fileInput.files[0];
+                        const base64Promise = new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.onerror = error => reject(error);
+                            reader.readAsDataURL(file);
+                        });
+                        
+                        formData.fileData = await base64Promise;
+                        formData.fileName = file.name;
+                        formData.fileMimeType = file.type;
+                    }
+
+                    // Si hay URL configurada, enviamos
+                    if (GOOGLE_SHEET_URL) {
+                        await fetch(GOOGLE_SHEET_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            cache: 'no-cache',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(formData)
+                        });
+                    }
+
+                    // Éxito
+                    formContent.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successText.innerText = `¡Postulación Recibida, ${nombre}! Te escribimos por WhatsApp en menos de 24hs.`;
+                    form.reset();
+                    cvUploadGroup.style.display = 'none';
+
+                } catch (error) {
+                    console.error("Error al enviar:", error);
+                    alert("Hubo un problema al enviar tu postulación. Por favor, intentá de nuevo.");
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
